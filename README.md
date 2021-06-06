@@ -1,7 +1,5 @@
 # OffLine Assignment 
 
-Simple overview of use/purpose.
-
 ## Task 1
 ### Markdown Headers
 
