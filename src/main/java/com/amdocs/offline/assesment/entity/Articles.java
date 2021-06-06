@@ -1,6 +1,11 @@
-package com.amdocs.articles.entity;
+package com.amdocs.offline.assesment.entity;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
+
+/** @author <a href  swati.gbpant@gmail.com</>**/
 
 /**
  * Article Bean Class (POJO)
@@ -8,8 +13,9 @@ import java.util.UUID;
  **/
 
 public class Articles {
-
+    @Nullable
     private String title;
+    @NonNull
     private String body;
     private LocalDateTime createDate;
     UUID uuid = UUID.randomUUID();
