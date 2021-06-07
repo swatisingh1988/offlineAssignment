@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -35,7 +34,7 @@ public class ArticleController
     }
 
     @GetMapping("/get/date")
-    public ArrayList<Articles> getArticlesByDate(@RequestParam String date){
+    public HashMap<UUID,Articles> getArticlesByDate(@RequestParam String date){
         logger.debug("/get/date ");
         return articleService.getArticlesByDate(date);
     }

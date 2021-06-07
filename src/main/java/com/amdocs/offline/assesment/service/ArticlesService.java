@@ -50,7 +50,7 @@ public class ArticlesService {
         return articlesRepository.getArticleByUniqueID(uuid);
     }
 
-    public ArrayList<Articles> getArticlesByDate(String date) {
+    public HashMap<UUID,Articles>getArticlesByDate(String date) {
         try {
             LocalDate localDate = LocalDate.parse(date);
         }catch (Exception e)
@@ -68,7 +68,9 @@ public class ArticlesService {
                 .filter( x -> x.getValue().getCreateDate().toLocalDate().equals(LocalDate.parse(date)))
                 .forEach(uuidArticlesEntry -> articlesbyDate.put(uuidArticlesEntry.getKey(),uuidArticlesEntry.getValue()));
 
-        while(articlesIterator.hasNext())
+        articlesbyDate.entrySet().stream().sorted(Comparator.comparing(x-> x.getValue().getCreateDate()));
+
+       /* while(articlesIterator.hasNext())
         {
             Map.Entry mapArticle = (Map.Entry)articlesIterator.next();
 
@@ -83,7 +85,12 @@ public class ArticlesService {
         {
             logger.error("No Article present for "+date);
             throw new ApiRequestException("No Article present for "+date);
+        }*/
+        if(articlesbyDate.size()==0)
+        {
+            logger.error("No Article present for "+date);
+            throw new ApiRequestException("No Article present for "+date);
         }
-        return articlesByDate;
+        return articlesbyDate;
     }
 }
