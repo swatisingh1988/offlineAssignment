@@ -15,3 +15,6 @@ ArticleController
 ### Object-oriented programming, OOP Challenge
 
 MockCommentController
+
+### Author
+Swati Singh
