@@ -3,34 +3,26 @@ package com.amdocs.offline.assesment.mockcomment.service;
 
 import com.amdocs.offline.assesment.exceptions.ApiRequestException;
 import com.amdocs.offline.assesment.mockcomment.entity.Comment;
-import com.amdocs.offline.assesment.mockcomment.entity.Person;
+import com.amdocs.offline.assesment.mockcomment.entity.ValidUser;
 
-public class User implements ICommentOperations {
+public class User extends ValidUser {
 
-    private Person person;
 
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
 
     @Override
     public Comment createComment(String message) {
-        Comment comment = new Comment(this.person,message);
+        Comment comment = new Comment(this.getPerson(),message);
         return comment;
     }
 
     @Override
     public boolean deleteComment(Comment comment) {
-        if(comment.getAuthor().getName().equals(person.getName()))
+        if(comment.getAuthor().getName().equals(this.getPerson().getName()))
         {
             comment=null;
             return true;
         }
-        else if(comment.getRepliedTo().getAuthor().getName().equals(this.person.getName()))
+        else if(comment.getRepliedTo().getAuthor().getName().equals(this.getPerson().getName()))
         {
             comment=null;
             return true;
@@ -42,7 +34,7 @@ public class User implements ICommentOperations {
 
     @Override
     public boolean editComment(Comment comment, String message) {
-        if(this.person.getName().equals(comment.getAuthor().getName())) {
+        if(this.getPerson().getName().equals(comment.getAuthor().getName())) {
             comment.setMessage(message);
             return true;
         }
@@ -52,7 +44,7 @@ public class User implements ICommentOperations {
 
     @Override
     public Comment replyTo(Comment comment, String message) {
-        Comment replyComment = new Comment(this.person,message,comment);
+        Comment replyComment = new Comment(this.getPerson(),message,comment);
         return replyComment;
     }
 }
