@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /** @author <a href  swati.gbpant@gmail.com</>**/
 
@@ -50,7 +51,7 @@ public class ArticlesService {
         return articlesRepository.getArticleByUniqueID(uuid);
     }
 
-    public HashMap<UUID,Articles>getArticlesByDate(String date) {
+    public  List<Articles> getArticlesByDate(String date) {
         try {
             LocalDate localDate = LocalDate.parse(date);
         }catch (Exception e)
@@ -59,7 +60,7 @@ public class ArticlesService {
             throw new ApiRequestException("Entered Date isn't Valid, please try again");
         }
 
-        ArrayList<Articles> articlesByDate= new ArrayList<Articles>();
+       List<Articles> articlesList= new ArrayList<Articles>();
                 Iterator articlesIterator = articlesRepository.getAll().entrySet().iterator();
 
         logger.info(date+"Streaming through repository for provided date articles");
@@ -68,7 +69,11 @@ public class ArticlesService {
                 .filter( x -> x.getValue().getCreateDate().toLocalDate().equals(LocalDate.parse(date)))
                 .forEach(uuidArticlesEntry -> articlesbyDate.put(uuidArticlesEntry.getKey(),uuidArticlesEntry.getValue()));
 
-        articlesbyDate.entrySet().stream().sorted(Comparator.comparing(x-> x.getValue().getCreateDate()));
+        articlesList = articlesbyDate.entrySet().stream().map(x ->
+        {
+            Articles object = x.getValue();
+            return object;
+        }).collect(Collectors.toList());
 
        /* while(articlesIterator.hasNext())
         {
@@ -79,18 +84,14 @@ public class ArticlesService {
             {
                 articlesByDate.add(article);
             }
-        }
-        articlesByDate.sort(Articles::compareByDateTime);
-        if(articlesByDate.size()==0)
-        {
-            logger.error("No Article present for "+date);
-            throw new ApiRequestException("No Article present for "+date);
         }*/
-        if(articlesbyDate.size()==0)
+        articlesList.sort(Articles::compareByDateTime);
+        if(articlesList.size()==0)
         {
             logger.error("No Article present for "+date);
             throw new ApiRequestException("No Article present for "+date);
         }
-        return articlesbyDate;
+
+        return articlesList;
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /** @author <a href  swati.gbpant@gmail.com</>**/
@@ -34,7 +35,7 @@ public class ArticleController
     }
 
     @GetMapping("/get/date")
-    public HashMap<UUID,Articles> getArticlesByDate(@RequestParam String date){
+    public List<Articles> getArticlesByDate(@RequestParam String date){
         logger.debug("/get/date ");
         return articleService.getArticlesByDate(date);
     }
