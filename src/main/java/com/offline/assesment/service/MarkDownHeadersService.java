@@ -1,5 +1,5 @@
-package com.amdocs.offline.assesment.service;
-import com.amdocs.offline.assesment.controller.ArticleController;
+package com.offline.assesment.service;
+import com.offline.assesment.controller.ArticleController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

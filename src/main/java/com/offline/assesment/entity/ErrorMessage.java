@@ -1,4 +1,4 @@
-package com.amdocs.offline.assesment.entity;
+package com.offline.assesment.entity;
 import org.springframework.http.HttpStatus;
 
 import java.time.ZonedDateTime;

@@ -1,7 +1,7 @@
-package com.amdocs.offline.assesment.controller;
+package com.offline.assesment.controller;
 
-import com.amdocs.offline.assesment.mockcomment.entity.Comment;
-import com.amdocs.offline.assesment.mockcomment.entity.Person;
+import com.offline.assesment.mockcomment.entity.Comment;
+import com.offline.assesment.mockcomment.entity.Person;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;

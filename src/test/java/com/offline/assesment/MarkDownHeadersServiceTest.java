@@ -1,7 +1,7 @@
-package com.amdocs.offline.assesment;
+package com.offline.assesment;
 
-import com.amdocs.offline.assesment.controller.MarkDownController;
-import com.amdocs.offline.assesment.service.MarkDownHeadersService;
+import com.offline.assesment.controller.MarkDownController;
+import com.offline.assesment.service.MarkDownHeadersService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

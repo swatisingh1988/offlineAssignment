@@ -1,9 +1,9 @@
-package com.amdocs.offline.assesment.service;
+package com.offline.assesment.service;
 
-import com.amdocs.offline.assesment.controller.ArticleController;
-import com.amdocs.offline.assesment.entity.Articles;
-import com.amdocs.offline.assesment.exceptions.ApiRequestException;
-import com.amdocs.offline.assesment.repository.ArticlesRepository;
+import com.offline.assesment.controller.ArticleController;
+import com.offline.assesment.entity.Articles;
+import com.offline.assesment.exceptions.ApiRequestException;
+import com.offline.assesment.repository.ArticlesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class ArticlesService {
     @Autowired
     ArticlesRepository articlesRepository;
 
-    public HashMap<UUID,Articles> getAll(){
+    public HashMap<UUID, Articles> getAll(){
 
         logger.trace("In ArticlesService getAll call ");
         return articlesRepository.getAll();

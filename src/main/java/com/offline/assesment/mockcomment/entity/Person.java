@@ -1,4 +1,4 @@
-package com.amdocs.offline.assesment.mockcomment.entity;
+package com.offline.assesment.mockcomment.entity;
 
 import java.time.LocalDateTime;
 

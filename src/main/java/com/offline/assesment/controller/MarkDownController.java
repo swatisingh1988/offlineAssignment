@@ -1,6 +1,6 @@
-package com.amdocs.offline.assesment.controller;
+package com.offline.assesment.controller;
 
-import com.amdocs.offline.assesment.service.MarkDownHeadersService;
+import com.offline.assesment.service.MarkDownHeadersService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

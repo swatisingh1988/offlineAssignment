@@ -1,7 +1,7 @@
-package com.amdocs.offline.assesment.controller;
+package com.offline.assesment.controller;
 
-import com.amdocs.offline.assesment.entity.Articles;
-import com.amdocs.offline.assesment.service.ArticlesService;
+import com.offline.assesment.entity.Articles;
+import com.offline.assesment.service.ArticlesService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

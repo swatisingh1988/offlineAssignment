@@ -1,7 +1,7 @@
-package com.amdocs.offline.assesment.exceptions;
+package com.offline.assesment.exceptions;
 
 
-import com.amdocs.offline.assesment.entity.ErrorMessage;
+import com.offline.assesment.entity.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

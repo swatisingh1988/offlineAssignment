@@ -1,4 +1,4 @@
-package com.amdocs.offline.assesment.exceptions;
+package com.offline.assesment.exceptions;
 
 /** @author <a href  swati.gbpant@gmail.com</>**/
 public class ApiRequestException extends RuntimeException{

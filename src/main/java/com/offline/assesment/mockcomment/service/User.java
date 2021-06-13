@@ -1,9 +1,9 @@
-package com.amdocs.offline.assesment.mockcomment.service;
+package com.offline.assesment.mockcomment.service;
 
 
-import com.amdocs.offline.assesment.exceptions.ApiRequestException;
-import com.amdocs.offline.assesment.mockcomment.entity.Comment;
-import com.amdocs.offline.assesment.mockcomment.entity.ValidUser;
+import com.offline.assesment.exceptions.ApiRequestException;
+import com.offline.assesment.mockcomment.entity.Comment;
+import com.offline.assesment.mockcomment.entity.ValidUser;
 
 public class User extends ValidUser {
 

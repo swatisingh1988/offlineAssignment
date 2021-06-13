@@ -1,8 +1,8 @@
-package com.amdocs.offline.assesment.repository;
+package com.offline.assesment.repository;
 
-import com.amdocs.offline.assesment.controller.ArticleController;
-import com.amdocs.offline.assesment.entity.Articles;
-import com.amdocs.offline.assesment.exceptions.ApiRequestException;
+import com.offline.assesment.controller.ArticleController;
+import com.offline.assesment.entity.Articles;
+import com.offline.assesment.exceptions.ApiRequestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;

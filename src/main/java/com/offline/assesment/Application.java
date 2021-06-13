@@ -1,4 +1,4 @@
-package com.amdocs.offline.assesment;
+package com.offline.assesment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

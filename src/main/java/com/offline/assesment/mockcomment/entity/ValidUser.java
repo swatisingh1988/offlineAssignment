@@ -1,6 +1,6 @@
-package com.amdocs.offline.assesment.mockcomment.entity;
+package com.offline.assesment.mockcomment.entity;
 
-import com.amdocs.offline.assesment.mockcomment.service.ICommentOperations;
+import com.offline.assesment.mockcomment.service.ICommentOperations;
 
 public class ValidUser implements ICommentOperations {
     private Person person;
