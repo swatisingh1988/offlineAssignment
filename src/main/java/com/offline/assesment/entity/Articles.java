@@ -1,4 +1,4 @@
-package com.amdocs.offline.assesment.entity;
+package com.offline.assesment.entity;
 
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
