@@ -4,7 +4,7 @@
 ### Markdown Headers
 MarkDown controller
 Task shall be accompanied with unit tests proving the solution.
-/nBackground
+Background
 Markdown is a formatting syntax used by many documents (these instructions, for example!) because of it's plain-text simplicity and its ability to be translated directly into HTML.
 Task
 Let's write a simple markdown parser function that will take in a single line of markdown and be translated into the appropriate HTML. To keep it simple, we'll support only one feature of markdown in atx syntax: headers.
