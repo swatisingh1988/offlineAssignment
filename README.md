@@ -11,9 +11,9 @@ Let's write a simple markdown parser function that will take in a single line of
 Headers are designated by (1-6) hashes followed by a space, followed by text. The number of hashes determines the header level of the HTML output.<br/>
 Examples
 <ul>
-<li> `# Header will become <h1>Header</h1></li>
-<li> ` ## Header will become <h2>Header</h2>`</li>
- <li> ` ###### Header will become <h6>Header</h6>`</li>
+<li> `# Header will become `<h1>Header</h1>`</li>
+<li> ` ## Header will become `<h2>Header</h2>``</li>
+ <li> ` ###### Header will become `<h6>Header</h6>``</li>
 </ul>
 
 ####Additional Rules
