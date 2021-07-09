@@ -1,5 +1,5 @@
 package com.offline.assesment.service;
-import com.offline.assesment.controller.ArticleController;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class MarkDownHeadersService {
 
 
-    Logger logger = LoggerFactory.getLogger(ArticleController.class);
+    Logger logger = LoggerFactory.getLogger(MarkDownHeadersService.class);
 
     public  static String atxPattern="(?<hash>^[#]{1,6})\\s(?<header>.+)";
 

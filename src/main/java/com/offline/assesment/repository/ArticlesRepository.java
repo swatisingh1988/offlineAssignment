@@ -1,8 +1,9 @@
 package com.offline.assesment.repository;
 
-import com.offline.assesment.controller.ArticleController;
+
 import com.offline.assesment.entity.Articles;
 import com.offline.assesment.exceptions.ApiRequestException;
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @Repository
 public class ArticlesRepository {
 
-    Logger logger = LoggerFactory.getLogger(ArticleController.class);
+    Logger logger = LoggerFactory.getLogger(ArticlesRepository.class);
 
    public HashMap<UUID, Articles> articleCollection = new HashMap();
 
@@ -32,7 +33,7 @@ public class ArticlesRepository {
        return articleCollection;
    }
 
-   public String add(Articles article)
+   public Pair<UUID,Articles> add(Articles article)
    {
        if(article.getBody()==null || article.getTitle()==null) {
            logger.error("Title and Body should be present to add an article ");
@@ -40,10 +41,11 @@ public class ArticlesRepository {
        }
        UUID uuid = UUID.randomUUID();
        articleCollection.put(uuid,article);
-      return "Successfully added";
+       Pair pair = new Pair<UUID,Articles>(uuid,articleCollection.get(uuid));
+       return pair;
    }
 
-    public String edit(UUID uuid,Articles article)
+    public Pair<UUID,Articles> edit(UUID uuid,Articles article)
     {
         if(articleCollection.containsKey(uuid))
             articleCollection.put(uuid,article);
@@ -51,7 +53,8 @@ public class ArticlesRepository {
             logger.error(uuid+"uuid doesn't exit in Article Record for updation");
             throw new ApiRequestException("Entered uuid doesn't exit in Article Record for updation");
         }
-        return "Sucessfull edit";
+        Pair pair = new Pair<UUID,Articles>(uuid,articleCollection.get(uuid));
+        return pair;
     }
 
     public String delete(UUID uuid)

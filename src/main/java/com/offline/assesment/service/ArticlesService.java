@@ -1,9 +1,10 @@
 package com.offline.assesment.service;
 
-import com.offline.assesment.controller.ArticleController;
+
 import com.offline.assesment.entity.Articles;
 import com.offline.assesment.exceptions.ApiRequestException;
 import com.offline.assesment.repository.ArticlesRepository;
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,30 +12,29 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /** @author <a href  swati.gbpant@gmail.com</>**/
 
 @Service
 public class ArticlesService {
 
-    Logger logger = LoggerFactory.getLogger(ArticleController.class);
+    Logger logger = LoggerFactory.getLogger(ArticlesService.class);
 
     @Autowired
     ArticlesRepository articlesRepository;
 
-    public HashMap<UUID, Articles> getAll(){
+    public HashMap<UUID,Articles> getAll(){
 
         logger.trace("In ArticlesService getAll call ");
         return articlesRepository.getAll();
     }
 
-    public String add(Articles article )
+    public Pair<UUID,Articles> add(Articles article )
     {
         logger.trace("In ArticlesService add call ");
         return articlesRepository.add(article);
     }
-    public String edit(UUID uuid,Articles article )
+    public Pair<UUID,Articles> edit(UUID uuid,Articles article )
     {
         logger.trace("In ArticlesService add edit ");
         return articlesRepository.edit(uuid,article);
@@ -51,7 +51,7 @@ public class ArticlesService {
         return articlesRepository.getArticleByUniqueID(uuid);
     }
 
-    public  List<Articles> getArticlesByDate(String date) {
+    public  HashMap<UUID,Articles> getArticlesByDate(String date) {
         try {
             LocalDate localDate = LocalDate.parse(date);
         }catch (Exception e)
@@ -59,39 +59,18 @@ public class ArticlesService {
             logger.error(date+"Date isn't Valid");
             throw new ApiRequestException("Entered Date isn't Valid, please try again");
         }
-
-       List<Articles> articlesList= new ArrayList<Articles>();
-                Iterator articlesIterator = articlesRepository.getAll().entrySet().iterator();
-
         logger.info(date+"Streaming through repository for provided date articles");
-        HashMap<UUID,Articles> articlesbyDate = new HashMap<>();
-        articlesRepository.getAll().entrySet().stream()
+        HashMap<UUID,Articles> articlesByDate = new LinkedHashMap<UUID,Articles>();
+                articlesRepository.getAll().entrySet()
+                .stream()
                 .filter( x -> x.getValue().getCreateDate().toLocalDate().equals(LocalDate.parse(date)))
-                .forEach(uuidArticlesEntry -> articlesbyDate.put(uuidArticlesEntry.getKey(),uuidArticlesEntry.getValue()));
+                .sorted(Comparator.comparing(Map.Entry::getValue,Articles.ArticlesByTitle.thenComparing(Articles::getCreateDate)))
+                .forEachOrdered((e)-> {
+                    UUID key = e.getKey();
+                    Articles value = e.getValue();
+                    articlesByDate.put(key,value);
+                });
 
-        articlesList = articlesbyDate.entrySet().stream().map(x ->
-        {
-            Articles object = x.getValue();
-            return object;
-        }).collect(Collectors.toList());
-
-       /* while(articlesIterator.hasNext())
-        {
-            Map.Entry mapArticle = (Map.Entry)articlesIterator.next();
-
-            Articles article= (Articles)mapArticle.getValue();
-            if(article.getCreateDate().toLocalDate().equals(LocalDate.parse(date)))
-            {
-                articlesByDate.add(article);
-            }
-        }*/
-        articlesList.sort(Articles::compareByDateTime);
-        if(articlesList.size()==0)
-        {
-            logger.error("No Article present for "+date);
-            throw new ApiRequestException("No Article present for "+date);
-        }
-
-        return articlesList;
+        return articlesByDate;
     }
 }

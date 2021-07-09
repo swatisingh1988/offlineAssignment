@@ -18,7 +18,7 @@ public class MarkDownController {
     @Autowired
     MarkDownHeadersService markDownHeadersService;
 
-    Logger logger = LoggerFactory.getLogger(ArticleController.class);
+    Logger logger = LoggerFactory.getLogger(MarkDownController.class);
 
     @PostMapping( path="/markdownheaders")
     public  String markdownheaders(@RequestBody String markdownheaders)
