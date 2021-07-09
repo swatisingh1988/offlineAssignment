@@ -3,11 +3,11 @@
 ## Task 1
 ### Markdown Headers
 MarkDown controller
-Task shall be accompanied with unit tests proving the solution.
+Task shall be accompanied with unit tests proving the solution.<br/>
 Background
-Markdown is a formatting syntax used by many documents (these instructions, for example!) because of it's plain-text simplicity and its ability to be translated directly into HTML.
-Task
-Let's write a simple markdown parser function that will take in a single line of markdown and be translated into the appropriate HTML. To keep it simple, we'll support only one feature of markdown in atx syntax: headers.
+Markdown is a formatting syntax used by many documents (these instructions, for example!) because of it's plain-text simplicity and its ability to be translated directly into HTML.<br/>
+Task<br/>
+<br/>Let's write a simple markdown parser function that will take in a single line of markdown and be translated into the appropriate HTML. <br/>To keep it simple, we'll support only one feature of markdown in atx syntax: headers.
 Headers are designated by (1-6) hashes followed by a space, followed by text. The number of hashes determines the header level of the HTML output.<br/>
 Examples
 `# Header will become "<h1>Header</h1>`
